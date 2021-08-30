@@ -19,14 +19,14 @@ namespace DaySim.ChoiceModels.Default.Models {
 
 
       if (mode == Global.Settings.Modes.ParkAndRide) {
-        alternative.AddUtilityTerm(211, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(212, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(213, (tour.OriginParcel.District == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(214, (tour.OriginParcel.District >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
-        alternative.AddUtilityTerm(215, (destinationParcel.District <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(216, (destinationParcel.District == 3).ToFlag()); //destinationParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(217, (destinationParcel.District == 4).ToFlag()); //destinationParcel.Suburban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(218, (destinationParcel.District >= 5).ToFlag()); //destinationParcel.AllRural_AreaType_Buffer1());
+        alternative.AddUtilityTerm(211, ((tour.OriginParcel.District % 10) <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
+        alternative.AddUtilityTerm(212, ((tour.OriginParcel.District % 10) == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(213, ((tour.OriginParcel.District % 10) == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(214, ((tour.OriginParcel.District % 10) >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
+        alternative.AddUtilityTerm(215, ((destinationParcel.District % 10) <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
+        alternative.AddUtilityTerm(216, ((destinationParcel.District % 10) == 3).ToFlag()); //destinationParcel.Urban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(217, ((destinationParcel.District % 10) == 4).ToFlag()); //destinationParcel.Suburban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(218, ((destinationParcel.District % 10) >= 5).ToFlag()); //destinationParcel.AllRural_AreaType_Buffer1());
         alternative.AddUtilityTerm(219, (tour.OriginParcel.DistanceToFerry > 0 && tour.OriginParcel.DistanceToFerry <= 0.5).ToFlag());
         alternative.AddUtilityTerm(220, (destinationParcel.DistanceToFerry > 0 && destinationParcel.DistanceToFerry <= 0.5).ToFlag());
         alternative.AddUtilityTerm(221, originInNJ);
@@ -34,20 +34,22 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(223, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(224, coreCBDOrig);
         alternative.AddUtilityTerm(225, coreCBDDest);
+        alternative.AddUtilityTerm(226, (tour.OriginParcel.District > 10).ToFlag());
+        alternative.AddUtilityTerm(227, (destinationParcel.District > 10).ToFlag());
 
         // alternative.AddUtilityTerm(225, destinationParcel.PCA_DensityTerm_Buffer1());
         // alternative.AddUtilityTerm(226, destinationParcel.PCA_WalkabilityTerm_Buffer1());
         // alternative.AddUtilityTerm(227, destinationParcel.PCA_MixedUseTerm_Buffer1());
         // alternative.AddUtilityTerm(228, destinationParcel.PCA_TransitAccessTerm_Buffer1());
       } else if (mode == Global.Settings.Modes.Transit) {
-        alternative.AddUtilityTerm(231, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(232, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(233, (tour.OriginParcel.District == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(234, (tour.OriginParcel.District >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
-        alternative.AddUtilityTerm(235, (destinationParcel.District <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(236, (destinationParcel.District == 3).ToFlag()); //destinationParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(237, (destinationParcel.District == 4).ToFlag()); //destinationParcel.Suburban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(238, (destinationParcel.District >= 5).ToFlag()); //destinationParcel.AllRural_AreaType_Buffer1());
+        alternative.AddUtilityTerm(231, ((tour.OriginParcel.District % 10) <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
+        alternative.AddUtilityTerm(232, ((tour.OriginParcel.District % 10) == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(233, ((tour.OriginParcel.District % 10) == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(234, ((tour.OriginParcel.District % 10) >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
+        alternative.AddUtilityTerm(235, ((destinationParcel.District % 10) <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
+        alternative.AddUtilityTerm(236, ((destinationParcel.District % 10) == 3).ToFlag()); //destinationParcel.Urban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(237, ((destinationParcel.District % 10) == 4).ToFlag()); //destinationParcel.Suburban_AreaType_Buffer1());
+        alternative.AddUtilityTerm(238, ((destinationParcel.District % 10) >= 5).ToFlag()); //destinationParcel.AllRural_AreaType_Buffer1());
         alternative.AddUtilityTerm(239, (tour.OriginParcel.DistanceToFerry > 0 && tour.OriginParcel.DistanceToFerry <= 0.5).ToFlag());
         alternative.AddUtilityTerm(240, (destinationParcel.DistanceToFerry > 0 && destinationParcel.DistanceToFerry <= 0.5).ToFlag());
         alternative.AddUtilityTerm(241, originInNJ);
@@ -55,6 +57,8 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(243, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(244, coreCBDOrig);
         alternative.AddUtilityTerm(245, coreCBDDest);
+        alternative.AddUtilityTerm(246, (tour.OriginParcel.District > 10).ToFlag());
+        alternative.AddUtilityTerm(247, (destinationParcel.District > 10).ToFlag());
 
         //  alternative.AddUtilityTerm(221, originParcel.PCA_DensityTerm_Buffer1());
         //  alternative.AddUtilityTerm(222, originParcel.PCA_WalkabilityTerm_Buffer1());
