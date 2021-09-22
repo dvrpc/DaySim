@@ -98,9 +98,14 @@ namespace DaySim.ChoiceModels.Default.Models {
       alternative.AddUtilityTerm(196, o_ext_snj * d_ext_oth);
       alternative.AddUtilityTerm(197, o_ext_snj * d_ext_snj);
 
-      alternative.AddUtilityTerm(211, d_study_area);
-      alternative.AddUtilityTerm(212, o_study_area * distanceFromOrigin);
-      alternative.AddUtilityTerm(213, d_study_area * distanceFromOrigin);
+      alternative.AddUtilityTerm(211, o_study_area * d_int_paphi);
+      alternative.AddUtilityTerm(212, o_study_area * d_int_paoth);
+      alternative.AddUtilityTerm(213, o_study_area * d_int_nj);
+      alternative.AddUtilityTerm(214, o_int_paphi * d_study_area);
+      alternative.AddUtilityTerm(215, o_int_paoth * d_study_area);
+      alternative.AddUtilityTerm(216, o_int_nj * d_study_area);
+      alternative.AddUtilityTerm(217, o_study_area * distanceFromOrigin);
+      alternative.AddUtilityTerm(218, d_study_area * distanceFromOrigin);
 
       //int origState = _person.Household.ResidenceParcel.District;
       //int destState = destinationParcel.District;
