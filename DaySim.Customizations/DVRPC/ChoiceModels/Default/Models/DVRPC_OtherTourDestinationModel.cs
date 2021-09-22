@@ -31,6 +31,9 @@ namespace DaySim.ChoiceModels.Default.Models {
       int cbdDest = (destinationParcel.District == 1).ToFlag();// (destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 30000).ToFlag();
       double distanceFromOrigin = _tour.OriginParcel.DistanceFromOrigin(destinationParcel, _tour.DestinationArrivalTime);
 
+      int o_study_area = (_person.Household.ResidenceParcel.District > 10).ToFlag();
+      int d_study_area = (destinationParcel.District > 10).ToFlag();
+
       alternative.AddUtilityTerm(121, o_int_nj * distanceFromOrigin);
       alternative.AddUtilityTerm(122, o_int_paoth * distanceFromOrigin);
       alternative.AddUtilityTerm(123, cbdDest * distanceFromOrigin);
@@ -98,7 +101,14 @@ namespace DaySim.ChoiceModels.Default.Models {
       alternative.AddUtilityTerm(196, o_ext_snj * d_ext_oth);
       alternative.AddUtilityTerm(197, o_ext_snj * d_ext_snj);
 
- 
+      alternative.AddUtilityTerm(211, o_study_area * d_int_paphi);
+      alternative.AddUtilityTerm(212, o_study_area * d_int_paoth);
+      alternative.AddUtilityTerm(213, o_study_area * d_int_nj);
+      alternative.AddUtilityTerm(214, o_int_paphi * d_study_area);
+      alternative.AddUtilityTerm(215, o_int_paoth * d_study_area);
+      alternative.AddUtilityTerm(216, o_int_nj * d_study_area);
+      alternative.AddUtilityTerm(217, o_study_area * distanceFromOrigin);
+      alternative.AddUtilityTerm(218, d_study_area * distanceFromOrigin);
 
       //add any region-specific new terms in region-specific class, using coefficient numbers 114-120, or other unused variable #
 
