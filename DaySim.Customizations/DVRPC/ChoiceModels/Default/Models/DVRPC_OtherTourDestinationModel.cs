@@ -31,7 +31,7 @@ namespace DaySim.ChoiceModels.Default.Models {
       int cbdDest = (destinationParcel.District == 1).ToFlag();// (destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 30000).ToFlag();
       double distanceFromOrigin = _tour.OriginParcel.DistanceFromOrigin(destinationParcel, _tour.DestinationArrivalTime);
 
-      int o_study_area = (_person.Household.ResidenceParcel.District > 10).ToFlag();
+      int o_study_area = (_tour.OriginParcel.District > 10).ToFlag();
       int d_study_area = (destinationParcel.District > 10).ToFlag();
 
       alternative.AddUtilityTerm(121, o_int_nj * distanceFromOrigin);
