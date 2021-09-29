@@ -28,6 +28,8 @@ namespace DaySim.ChoiceModels.Default.Models {
       int d_ext_snj = (destinationParcel.ZoneKey > 56000 && destinationParcel.ZoneKey <= 58000).ToFlag();
       int d_ext_oth = (destinationParcel.ZoneKey > 58000).ToFlag();
 
+      int d_center_city = (destinationParcel.ZoneKey < 200).ToFlag();
+
       int cbdDest = (destinationParcel.District == 1).ToFlag();//(destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 30000).ToFlag();
       double distanceFromOrigin = _person.Household.ResidenceParcel.DistanceFromOrigin(destinationParcel, Global.Settings.Times.EightAM);
 
@@ -94,6 +96,8 @@ namespace DaySim.ChoiceModels.Default.Models {
       alternative.AddUtilityTerm(195, o_ext_snj * d_ext_nnj);
       alternative.AddUtilityTerm(196, o_ext_snj * d_ext_oth);
       alternative.AddUtilityTerm(197, o_ext_snj * d_ext_snj);
+
+      alternative.AddUtilityTerm(200, d_center_city);
 
       //int origState = _person.Household.ResidenceParcel.District;
       //int destState = destinationParcel.District;
