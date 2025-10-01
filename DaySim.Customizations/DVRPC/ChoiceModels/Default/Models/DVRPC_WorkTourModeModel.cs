@@ -16,15 +16,16 @@ namespace DaySim.ChoiceModels.Default.Models {
 
       int coreCBDOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey < 200 || (tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();// (tour.OriginParcel.HouseholdsBuffer1 + tour.OriginParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
       int coreCBDDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey < 200 || (destinationParcel.ZoneKey > 1000 && destinationParcel.ZoneKey < 1200))).ToFlag();// (destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
+      int extCBDOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey < 200 || (tour.OriginParcel.ZoneKey > 50000))).ToFlag();
+      int extCBDDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey < 200 || (destinationParcel.ZoneKey > 50000))).ToFlag();
+      // int urbanFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 200 && !(tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();
+      // int cbdFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
 
-      int urbanFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 200 && !(tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();
-      int cbdFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
-      
       if (mode == Global.Settings.Modes.ParkAndRide) {
-        // alternative.AddUtilityTerm(211, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(211, cbdFlag);
-        // alternative.AddUtilityTerm(212, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(212, urbanFlag);
+        alternative.AddUtilityTerm(211, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
+        // alternative.AddUtilityTerm(211, cbdFlag);
+        alternative.AddUtilityTerm(212, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
+        // alternative.AddUtilityTerm(212, urbanFlag);
         alternative.AddUtilityTerm(213, (tour.OriginParcel.District == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
         alternative.AddUtilityTerm(214, (tour.OriginParcel.District >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
         alternative.AddUtilityTerm(215, (destinationParcel.District <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
@@ -38,7 +39,8 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(223, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(224, coreCBDOrig);
         alternative.AddUtilityTerm(225, coreCBDDest);
-
+        alternative.AddUtilityTerm(226, extCBDOrig);
+        alternative.AddUtilityTerm(227, extCBDDest);
         // alternative.AddUtilityTerm(225, destinationParcel.PCA_DensityTerm_Buffer1());
         // alternative.AddUtilityTerm(226, destinationParcel.PCA_WalkabilityTerm_Buffer1());
         // alternative.AddUtilityTerm(227, destinationParcel.PCA_MixedUseTerm_Buffer1());
@@ -59,7 +61,8 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(243, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(244, coreCBDOrig);
         alternative.AddUtilityTerm(245, coreCBDDest);
-
+        alternative.AddUtilityTerm(246, extCBDOrig);
+        alternative.AddUtilityTerm(247, extCBDDest);
         //  alternative.AddUtilityTerm(221, originParcel.PCA_DensityTerm_Buffer1());
         //  alternative.AddUtilityTerm(222, originParcel.PCA_WalkabilityTerm_Buffer1());
         //  alternative.AddUtilityTerm(223, originParcel.PCA_MixedUseTerm_Buffer1());
