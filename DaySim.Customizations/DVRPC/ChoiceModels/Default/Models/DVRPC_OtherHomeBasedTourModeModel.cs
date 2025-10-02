@@ -41,10 +41,10 @@ namespace DaySim.ChoiceModels.Default.Models {
         // alternative.AddUtilityTerm(227, destinationParcel.PCA_MixedUseTerm_Buffer1());
         // alternative.AddUtilityTerm(228, destinationParcel.PCA_TransitAccessTerm_Buffer1());
       } else if (mode == Global.Settings.Modes.Transit) {
-        // alternative.AddUtilityTerm(231, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
-        alternative.AddUtilityTerm(231, cbdFlag);
-        // alternative.AddUtilityTerm(232, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
-        alternative.AddUtilityTerm(232, urbanFlag);
+        alternative.AddUtilityTerm(231, (tour.OriginParcel.District <= 2).ToFlag()); //tour.OriginParcel.CBD_AreaType_Buffer1());
+        // alternative.AddUtilityTerm(231, cbdFlag);
+        alternative.AddUtilityTerm(232, (tour.OriginParcel.District == 3).ToFlag()); //tour.OriginParcel.Urban_AreaType_Buffer1());
+        // alternative.AddUtilityTerm(232, urbanFlag);
         alternative.AddUtilityTerm(233, (tour.OriginParcel.District == 4).ToFlag()); //tour.OriginParcel.Suburban_AreaType_Buffer1());
         alternative.AddUtilityTerm(234, (tour.OriginParcel.District >= 5).ToFlag()); //tour.OriginParcel.AllRural_AreaType_Buffer1());
         alternative.AddUtilityTerm(235, (destinationParcel.District <= 2).ToFlag()); //destinationParcel.CBD_AreaType_Buffer1());
