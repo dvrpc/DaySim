@@ -16,8 +16,8 @@ namespace DaySim.ChoiceModels.Default.Models {
 
       int coreCBDOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey < 200 || (tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();// (tour.OriginParcel.HouseholdsBuffer1 + tour.OriginParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
       int coreCBDDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey < 200 || (destinationParcel.ZoneKey > 1000 && destinationParcel.ZoneKey < 1200))).ToFlag();// (destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
-      int extCBDOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
-      int extCBDDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey > 50000)).ToFlag();
+      int extOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
+      int extDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey > 50000)).ToFlag();
       // int urbanFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 200 && !(tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();
       // int cbdFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
 
@@ -39,8 +39,8 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(223, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(224, coreCBDOrig);
         alternative.AddUtilityTerm(225, coreCBDDest);
-        alternative.AddUtilityTerm(226, extCBDOrig);
-        alternative.AddUtilityTerm(227, extCBDDest);
+        alternative.AddUtilityTerm(226, extOrig);
+        alternative.AddUtilityTerm(227, extDest);
         // alternative.AddUtilityTerm(225, destinationParcel.PCA_DensityTerm_Buffer1());
         // alternative.AddUtilityTerm(226, destinationParcel.PCA_WalkabilityTerm_Buffer1());
         // alternative.AddUtilityTerm(227, destinationParcel.PCA_MixedUseTerm_Buffer1());
@@ -61,8 +61,8 @@ namespace DaySim.ChoiceModels.Default.Models {
         alternative.AddUtilityTerm(243, destinInNJ * originInNJ);
         alternative.AddUtilityTerm(244, coreCBDOrig);
         alternative.AddUtilityTerm(245, coreCBDDest);
-        alternative.AddUtilityTerm(246, extCBDOrig);
-        alternative.AddUtilityTerm(247, extCBDDest);
+        alternative.AddUtilityTerm(246, extOrig);
+        alternative.AddUtilityTerm(247, extDest);
         //  alternative.AddUtilityTerm(221, originParcel.PCA_DensityTerm_Buffer1());
         //  alternative.AddUtilityTerm(222, originParcel.PCA_WalkabilityTerm_Buffer1());
         //  alternative.AddUtilityTerm(223, originParcel.PCA_MixedUseTerm_Buffer1());
