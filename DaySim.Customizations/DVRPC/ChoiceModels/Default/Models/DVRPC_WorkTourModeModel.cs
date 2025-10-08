@@ -16,8 +16,8 @@ namespace DaySim.ChoiceModels.Default.Models {
 
       int coreCBDOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey < 200 || (tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();// (tour.OriginParcel.HouseholdsBuffer1 + tour.OriginParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
       int coreCBDDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey < 200 || (destinationParcel.ZoneKey > 1000 && destinationParcel.ZoneKey < 1200))).ToFlag();// (destinationParcel.HouseholdsBuffer1 + destinationParcel.EmploymentTotalBuffer1 >= 31000).ToFlag();
-      int extOrig = ((tour.OriginParcel.District == 1 || tour.OriginParcel.District == 2) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
-      int extDest = ((destinationParcel.District == 1 || destinationParcel.District == 2) && (destinationParcel.ZoneKey > 50000)).ToFlag();
+      int extOrig = (tour.OriginParcel.ZoneKey > 50000).ToFlag();
+      int extDest = (destinationParcel.ZoneKey > 50000).ToFlag();
       // int urbanFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 200 && !(tour.OriginParcel.ZoneKey > 1000 && tour.OriginParcel.ZoneKey < 1200))).ToFlag();
       // int cbdFlag = ((tour.OriginParcel.District > 0 && tour.OriginParcel.District < 4) && (tour.OriginParcel.ZoneKey > 50000)).ToFlag();
 
